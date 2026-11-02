@@ -56,6 +56,9 @@ COPY . .
 # Copy compiled frontend assets from Stage 1
 COPY --from=node-builder /app/public/build ./public/build
 
+# Ensure Vite dev hot file is removed in production
+RUN rm -f /var/www/html/public/hot
+
 # Install PHP dependencies for production
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
