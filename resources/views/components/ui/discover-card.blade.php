@@ -17,7 +17,7 @@
 
 <a 
     href="{{ $link }}" 
-    {{ $attributes->merge(['class' => 'group relative flex flex-col justify-between bg-white border border-border rounded-2xl p-4 sm:p-5 lg:p-6 shadow-xs hover:border-brand hover:shadow-[0_12px_32px_rgba(240,80,35,0.12)] hover:-translate-y-1 transition-all duration-300 overflow-hidden']) }}
+    {{ $attributes->merge(['class' => 'group relative flex flex-col justify-between bg-white border border-border rounded-2xl p-4 sm:p-5 lg:p-6 shadow-xs hover:border-brand hover:shadow-lg hover:shadow-brand/15 hover:-translate-y-1 transition-all duration-300 overflow-hidden']) }}
 >
     <!-- ================= 1. MOBILE VIEW (< lg): UNIFORM, 100% CONSISTENT & NO OVERFLOW ================= -->
     <div class="lg:hidden flex items-center justify-between gap-3 sm:gap-4 w-full h-full">

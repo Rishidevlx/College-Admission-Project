@@ -14,7 +14,7 @@
 ])
 
 <!-- Global Reusable College Card Component (Clean Line List Style, Consistent Theme Colors) -->
-<div {{ $attributes->merge(['class' => 'group relative bg-white border border-border rounded-2xl overflow-hidden shadow-xs hover:border-brand hover:shadow-[0_12px_32px_rgba(240,80,35,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full']) }}>
+<div {{ $attributes->merge(['class' => 'group relative bg-white border border-border rounded-2xl overflow-hidden shadow-xs hover:border-brand hover:shadow-lg hover:shadow-brand/15 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full']) }}>
 
     <!-- ================= 1. CAMPUS BANNER WITH OVERLAID COLLEGE IDENTITY ================= -->
     <div class="relative w-full h-44 sm:h-48 overflow-hidden bg-zinc-900 flex-shrink-0">

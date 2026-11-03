@@ -1,16 +1,16 @@
 <x-layouts.app title="College Finder - Find Top Colleges & Courses in Tamil Nadu" :hide-glow="true">
 
-    <!-- Top Header Area (Navbar + Hero with Ambient Glow starting from top of Navbar and flowing down across Hero) -->
-    <div class="relative bg-white border-b border-border/70 z-30">
-        <!-- Ambient Glow: Pure #F05023 Orange Tone (Isolated overflow-hidden layer so dropdowns are not clipped) -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            <div class="absolute -top-28 sm:-top-40 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1100px] lg:w-[1300px] h-[360px] sm:h-[480px] bg-[#F05023] rounded-full filter blur-[90px] sm:blur-[130px] opacity-25 sm:opacity-30 pointer-events-none"></div>
-            <div class="absolute -top-20 -left-20 sm:-top-28 sm:-left-24 w-[350px] sm:w-[480px] h-[260px] sm:h-[360px] bg-[#F05023] rounded-full filter blur-[75px] sm:blur-[110px] opacity-20 sm:opacity-25 pointer-events-none"></div>
-            <div class="absolute -top-20 -right-20 sm:-top-28 sm:-right-24 w-[350px] sm:w-[480px] h-[260px] sm:h-[360px] bg-[#F05023] rounded-full filter blur-[75px] sm:blur-[110px] opacity-20 sm:opacity-25 pointer-events-none"></div>
-        </div>
+    <!-- 1. Fixed Pure White Navigation Bar -->
+    <x-ui.navbar />
 
-        <!-- 1. Minimalist Navigation Bar (Logo Left, Call Now CTA Right) -->
-        <x-ui.navbar />
+    <!-- Top Header Area (Hero with Ambient Glow) -->
+    <div class="relative bg-white border-b border-border/70 z-30">
+        <!-- Ambient Glow: Central Brand Theme Tone (Isolated overflow-hidden layer so dropdowns are not clipped) -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <div class="absolute -top-28 sm:-top-40 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1100px] lg:w-[1300px] h-[360px] sm:h-[480px] bg-brand rounded-full filter blur-[90px] sm:blur-[130px] opacity-25 sm:opacity-30 pointer-events-none"></div>
+            <div class="absolute -top-20 -left-20 sm:-top-28 sm:-left-24 w-[350px] sm:w-[480px] h-[260px] sm:h-[360px] bg-brand rounded-full filter blur-[75px] sm:blur-[110px] opacity-20 sm:opacity-25 pointer-events-none"></div>
+            <div class="absolute -top-20 -right-20 sm:-top-28 sm:-right-24 w-[350px] sm:w-[480px] h-[260px] sm:h-[360px] bg-brand rounded-full filter blur-[75px] sm:blur-[110px] opacity-20 sm:opacity-25 pointer-events-none"></div>
+        </div>
 
         <!-- 2. Hero Header Section with Search Bar & Stream Preference Selector -->
         <x-sections.finder-hero />

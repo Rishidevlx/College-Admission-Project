@@ -26,7 +26,7 @@
                     type="button" 
                     id="stream-dropdown-trigger"
                     onclick="toggleStreamDropdown(event)"
-                    class="w-full sm:w-auto inline-flex items-center justify-between sm:justify-center gap-2.5 px-5 sm:px-6 h-[52px] sm:h-[60px] bg-white border border-brand hover:border-brand rounded-xl shadow-[0_4px_24px_rgba(240,80,35,0.12)] hover:shadow-[0_6px_30px_rgba(240,80,35,0.18)] text-heading hover:text-brand transition-all cursor-pointer text-xs sm:text-sm font-semibold flex-shrink-0 group relative z-50"
+                    class="w-full sm:w-auto inline-flex items-center justify-between sm:justify-center gap-2.5 px-5 sm:px-6 h-[52px] sm:h-[60px] bg-white border border-brand hover:border-brand rounded-xl shadow-md shadow-brand/10 hover:shadow-lg hover:shadow-brand/20 text-heading hover:text-brand transition-all cursor-pointer text-xs sm:text-sm font-semibold flex-shrink-0 group relative z-50"
                 >
                     <div class="flex items-center gap-2">
                         <i data-lucide="graduation-cap" class="w-4 h-4 text-brand"></i>

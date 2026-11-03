@@ -119,7 +119,7 @@
                 
                 <a 
                     href="tel:+917358110062" 
-                    class="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-[13px] font-semibold text-white bg-brand hover:bg-heading transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer"
+                    class="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs sm:text-[13px] font-semibold text-white bg-brand hover:bg-brand-hover active:scale-95 transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer"
                 >
                     <span>Enquire Now</span>
                     <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>

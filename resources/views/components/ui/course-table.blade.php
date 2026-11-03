@@ -23,7 +23,7 @@
             <!-- Table Body -->
             <tbody class="divide-y divide-border/70 text-sm">
                 @forelse ($courses as $course)
-                    <tr class="hover:bg-[#FFF9F5] transition-colors duration-150 group">
+                    <tr class="hover:bg-brand/5 transition-colors duration-150 group">
                         
                         <!-- 1. Course Icon, Name & Subtitle -->
                         <td class="py-4 px-6 whitespace-nowrap">
@@ -138,7 +138,7 @@
 
                     <a 
                         href="{{ $course['link'] ?? '#course-details' }}"
-                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-heading text-white text-xs font-semibold shadow-xs hover:bg-brand active:scale-95 transition-all"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand text-white text-xs font-semibold shadow-xs hover:bg-brand-hover active:scale-95 transition-all"
                     >
                         <span>View</span>
                         <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>

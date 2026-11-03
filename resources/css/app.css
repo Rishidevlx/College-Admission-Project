@@ -11,7 +11,8 @@
    Change any color or font here to update the entire website instantly!
    ========================================================================== */
 :root {
-    --brand-orange: #F05023;
+    --brand-red: #EE2C3C;
+    --brand-red-hover: #D41F2E;
     --brand-heading: #100C01;
     --brand-subheading: #39353B;
     --brand-muted: #71717A;
@@ -21,7 +22,8 @@
 
 @theme {
     --font-sans: var(--font-primary);
-    --color-brand: var(--brand-orange);
+    --color-brand: var(--brand-red);
+    --color-brand-hover: var(--brand-red-hover);
     --color-heading: var(--brand-heading);
     --color-subheading: var(--brand-subheading);
     --color-muted: var(--brand-muted);

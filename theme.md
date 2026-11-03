@@ -11,7 +11,8 @@ A clean, standardized design guide for typography, color palette, buttons, and v
 | **Canvas Background** | `#FFFFFF` | `bg-white` | Spotless pure white page & card background |
 | **Heading & Primary** | `#100C01` | `text-[#100C01]`, `bg-[#100C01]` | Deep rich charcoal black for main headings & solid buttons |
 | **Subheading & Nav** | `#39353B` | `text-[#39353B]` | Neutral charcoal for subtitles and navbar links |
-| **Brand Thick Orange** | `#F05023` | `hover:text-[#F05023]`, `hover:bg-[#F05023]` | Vibrant brand orange for hovers, borders & ambient glow |
+| **Brand Crimson Red** | `#EE2C3C` | `text-brand`, `bg-brand`, `border-brand` | Vibrant brand crimson red for buttons, borders & ambient glow |
+| **Brand Red Hover** | `#D41F2E` | `hover:bg-[#D41F2E]` | Darker red shade for primary button hover states |
 | **Muted & Placeholder** | `#71717A` | `text-[#71717A]` | Gray for input placeholders, icons, and helper text |
 | **Border & Dividers** | `#E5E5E7` | `border-[#E5E5E7]`, `border-[#F0EFEB]` | Subtle light gray borders for cards and header divider |
 

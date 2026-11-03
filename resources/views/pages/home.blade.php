@@ -1,4 +1,4 @@
-<x-layouts.app title="Find Top Colleges & Courses After 12th Standard">
+<x-layouts.app title="Find Top Colleges & Courses After 12th Standard" :hide-glow="true">
 
     <!-- Reusable Navbar Component -->
     <x-ui.navbar />

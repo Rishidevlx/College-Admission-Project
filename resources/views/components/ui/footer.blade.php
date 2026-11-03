@@ -1,10 +1,10 @@
 <!-- Reusable Footer Component (Figma Design Spec with Ambient Glow & Brand Orange Theme) -->
 <footer class="bg-white border-t border-border/70 pt-12 sm:pt-16 lg:pt-20 pb-10 text-subheading overflow-hidden relative">
     
-    <!-- Ambient Glow: Pure #F05023 Orange Tone (Contained low at the bottom edge) -->
-    <div class="absolute -bottom-36 sm:-bottom-44 left-1/2 -translate-x-1/2 w-[600px] sm:w-[950px] lg:w-[1100px] h-[160px] sm:h-[200px] bg-[#F05023] rounded-full filter blur-[60px] sm:blur-[80px] opacity-25 sm:opacity-30 pointer-events-none z-0"></div>
-    <div class="absolute -bottom-28 -left-20 sm:-bottom-36 sm:-left-24 w-[300px] sm:w-[380px] h-[130px] sm:h-[160px] bg-[#F05023] rounded-full filter blur-[50px] sm:blur-[70px] opacity-20 sm:opacity-25 pointer-events-none z-0"></div>
-    <div class="absolute -bottom-28 -right-20 sm:-bottom-36 sm:-right-24 w-[300px] sm:w-[380px] h-[130px] sm:h-[160px] bg-[#F05023] rounded-full filter blur-[50px] sm:blur-[70px] opacity-20 sm:opacity-25 pointer-events-none z-0"></div>
+    <!-- Ambient Glow: Central Brand Theme Tone (Contained low at the bottom edge) -->
+    <div class="absolute -bottom-36 sm:-bottom-44 left-1/2 -translate-x-1/2 w-[600px] sm:w-[950px] lg:w-[1100px] h-[160px] sm:h-[200px] bg-brand rounded-full filter blur-[60px] sm:blur-[80px] opacity-25 sm:opacity-30 pointer-events-none z-0"></div>
+    <div class="absolute -bottom-28 -left-20 sm:-bottom-36 sm:-left-24 w-[300px] sm:w-[380px] h-[130px] sm:h-[160px] bg-brand rounded-full filter blur-[50px] sm:blur-[70px] opacity-20 sm:opacity-25 pointer-events-none z-0"></div>
+    <div class="absolute -bottom-28 -right-20 sm:-bottom-36 sm:-right-24 w-[300px] sm:w-[380px] h-[130px] sm:h-[160px] bg-brand rounded-full filter blur-[50px] sm:blur-[70px] opacity-20 sm:opacity-25 pointer-events-none z-0"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -88,8 +88,8 @@
                     <li><a href="{{ url('/colleges') }}" class="hover:text-brand hover:translate-x-0.5 transition-all inline-block">Find Colleges</a></li>
                     <li><a href="#courses" class="hover:text-brand hover:translate-x-0.5 transition-all inline-block">Explore Courses</a></li>
                     <li><a href="#locations" class="hover:text-brand hover:translate-x-0.5 transition-all inline-block">Browse Districts</a></li>
-                    <li><a href="#about" class="hover:text-brand hover:translate-x-0.5 transition-all inline-block">About Us</a></li>
-                    <li><a href="#contact" class="hover:text-brand hover:translate-x-0.5 transition-all inline-block">Contact Us</a></li>
+                    <li><a href="{{ url('/about') }}" class="hover:text-brand hover:translate-x-0.5 transition-all inline-block">About Us</a></li>
+                    <li><a href="{{ url('/contact') }}" class="hover:text-brand hover:translate-x-0.5 transition-all inline-block">Contact Us</a></li>
                 </ul>
             </div>
 

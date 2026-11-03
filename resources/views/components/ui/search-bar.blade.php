@@ -9,7 +9,7 @@
     <form 
         action="{{ $action }}" 
         method="GET" 
-        class="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 h-[52px] sm:h-[60px] bg-white border border-brand rounded-xl shadow-[0_4px_24px_rgba(240,80,35,0.12)] hover:shadow-[0_6px_30px_rgba(240,80,35,0.18)] focus-within:ring-4 focus-within:ring-brand/20 transition-all"
+        class="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 h-[52px] sm:h-[60px] bg-white border border-brand rounded-xl shadow-md shadow-brand/10 hover:shadow-lg hover:shadow-brand/20 focus-within:ring-4 focus-within:ring-brand/20 transition-all"
     >
         <!-- Search Icon -->
         <div class="pl-1 sm:pl-2 flex-shrink-0 text-brand">
