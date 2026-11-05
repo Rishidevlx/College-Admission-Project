@@ -34,5 +34,9 @@ Route::get('/privacy-policy', function () {
     return view('pages.privacy-policy');
 })->name('privacy');
 
+Route::get('/cookie-policy', function () {
+    return view('pages.cookie-policy');
+})->name('cookie.policy');
+
 
 

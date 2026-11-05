@@ -157,4 +157,9 @@
 
     </article>
 
+    <!-- Inline FAQs for Placements Tab -->
+    <x-college.college-tab-faq 
+        title="Placements & Salary Packages FAQs"
+    />
+
 </div>

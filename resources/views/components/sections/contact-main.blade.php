@@ -45,13 +45,13 @@
 
         </div>
 
-        <!-- ================= RIGHT COLUMN: REUSED HOME HERO ENQUIRY FORM (CLEAN NO-CARD LAYOUT MATCHING HOME) ================= -->
+        <!-- ================= RIGHT COLUMN: FORM CARD IN #FEFFFF, EXACT HOME HERO DESIGN & SIZE ================= -->
         <div class="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end w-full">
-            <div class="w-full max-w-md lg:max-w-none relative">
+            <div class="w-full max-w-md bg-[#FEFFFF] rounded-2xl border border-zinc-200 p-4 sm:p-5 md:p-6 transition-all mx-auto lg:mx-0">
                 <x-ui.enquiry-form 
                     prefix="contact" 
-                    title="Get In Touch"
-                    badgeText="100% Free Guidance"
+                    title="Check College Seats & Fees"
+                    badgeText="100% Free"
                     subtitle="Get verified cutoffs, fee quotes & seat status in 5 mins."
                 />
             </div>

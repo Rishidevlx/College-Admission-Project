@@ -13,28 +13,13 @@
     <main class="py-8 sm:py-12 bg-white min-h-[600px] relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Mobile Filter Toggle Bar (Visible on < lg) -->
-            <div class="lg:hidden mb-4 flex items-center justify-between p-3.5 bg-white border border-border rounded-xl shadow-xs">
-                <button 
-                    type="button" 
-                    onclick="toggleMobileFilters()" 
-                    class="flex items-center gap-2 text-xs sm:text-sm font-bold text-heading"
-                >
-                    <i data-lucide="sliders-horizontal" class="w-4 h-4 text-brand"></i>
-                    <span>Filter Colleges</span>
-                    <span id="mobile-filter-count" class="w-5 h-5 rounded-full bg-brand text-white text-[11px] flex items-center justify-center font-bold hidden">0</span>
-                </button>
-
-                <div class="text-xs text-muted font-medium">
-                    <span id="mobile-college-count">6 Colleges Found</span>
-                </div>
-            </div>
+            <!-- Mobile In-Flow Filter Bar Removed in favor of Left Fixed Floating Action Button -->
 
             <!-- 2-Column Grid Layout -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                <!-- Left Column: Filter Sidebar (lg:col-span-4 xl:col-span-3 - Sticky with top offset matching navbar height) -->
-                <div id="filter-sidebar-wrapper" class="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-24 z-20">
+                <!-- Desktop Left Column: Filter Sidebar (lg:col-span-4 xl:col-span-3 sticky) -->
+                <div class="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-24 z-20">
                     <x-ui.finder-filter-sidebar />
                 </div>
 
@@ -208,7 +193,38 @@
         </div>
     </main>
 
-    <!-- 5. Reusable Footer Component -->
+    <!-- 5. Frequently Asked Questions (FAQ) Section Component -->
+    <x-sections.faq-section />
+
+    <!-- ================= MOBILE MODAL DRAWER (PLACED AT ROOT FOR TOPMOST Z-INDEX OVER HERO & NAVBAR) ================= -->
+    <div 
+        id="filter-sidebar-wrapper" 
+        class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 lg:hidden transition-all"
+        onclick="if(event.target === this) toggleMobileFilters()"
+    >
+        <div class="w-full max-h-[85vh] sm:max-h-[90vh] overflow-hidden rounded-t-3xl sm:rounded-2xl bg-white shadow-2xl animate-in fade-in slide-in-from-bottom duration-200">
+            <x-ui.finder-filter-sidebar />
+        </div>
+    </div>
+
+    <!-- ================= FIXED LEFT-EDGE CENTERED SQUARE FILTER BUTTON (OVERLAYS ALL CONTENT) ================= -->
+    <div class="fixed left-0 top-1/2 -translate-y-1/2 z-50 lg:hidden select-none">
+        <button 
+            type="button" 
+            onclick="toggleMobileFilters()" 
+            class="relative w-12 h-12 rounded-r-2xl bg-brand hover:bg-brand-hover text-white shadow-2xl shadow-brand/40 flex flex-col items-center justify-center gap-0.5 border-t-2 border-r-2 border-b-2 border-white/30 transition-all transform hover:translate-x-1 active:scale-95 cursor-pointer"
+            title="Open Filters"
+        >
+            <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+            <span class="text-[9px] font-bold uppercase tracking-wider leading-none">Filter</span>
+            <!-- Active Filter Count Badge -->
+            <span id="mobile-filter-count" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-heading text-white border-2 border-white text-[10px] font-black flex items-center justify-center hidden">
+                0
+            </span>
+        </button>
+    </div>
+
+    <!-- 6. Reusable Footer Component -->
     <x-ui.footer />
 
     <!-- ================= CLIENT-SIDE REALTIME FILTER & SEARCH CONTROLLER ================= -->
@@ -372,7 +388,14 @@
         function toggleMobileFilters() {
             const sidebar = document.getElementById('filter-sidebar-wrapper');
             if (sidebar) {
-                sidebar.classList.toggle('hidden');
+                const isHidden = sidebar.classList.contains('hidden');
+                if (isHidden) {
+                    sidebar.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden', 'lg:overflow-auto');
+                } else {
+                    sidebar.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden', 'lg:overflow-auto');
+                }
             }
         }
 

@@ -49,17 +49,28 @@
 @endphp
 
 <!-- "Explore Courses & Programs" Table Section (Pure White Theme) -->
-<section id="courses" class="relative py-12 sm:py-16 lg:py-20 bg-white border-t border-border/50 overflow-hidden">
+<section id="courses" class="relative py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        <!-- Section Header (Clean Minimalist Left-Aligned) -->
-        <div class="max-w-2xl mb-8 sm:mb-10">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-heading tracking-tight">
-                Explore Courses & Programs
-            </h2>
-            <p class="mt-2 text-[14px] sm:text-base font-normal text-muted leading-relaxed">
-                Find the right course for your academic and career goals.
-            </p>
+        <!-- Section Header with Right-Side "Explore Programs" Link -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-heading tracking-tight">
+                    Explore Courses & Programs
+                </h2>
+                <p class="mt-2 text-[14px] sm:text-base font-normal text-muted leading-relaxed">
+                    Find the right course for your academic and career goals.
+                </p>
+            </div>
+
+            <!-- Right-Side Explore Link with Arrow in Brand Color -->
+            <a 
+                href="{{ url('/colleges') }}" 
+                class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand hover:text-brand-hover hover:underline transition-colors shrink-0 group"
+            >
+                <span>Explore Programs</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
         </div>
 
         <!-- Reusable Course Table Component -->
@@ -67,14 +78,9 @@
             <x-ui.course-table :courses="$courses" />
         </div>
 
-        <!-- Course CTA Banner Component (Dedicated to Courses with User Reference Image) -->
-        <div class="mt-8 sm:mt-10 lg:mt-12">
-            <x-ui.cta-banner 
-                title="Choose the right Course for your future"
-                button-text="Explore Courses"
-                button-link="#courses"
-                image="{{ asset('images/assets/course-cta-student.png') }}"
-            />
+        <!-- Placement Achievement CTA Card -->
+        <div class="mt-10 sm:mt-12 lg:mt-14">
+            <x-sections.placement-achievement-cta />
         </div>
 
     </div>

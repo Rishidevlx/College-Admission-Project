@@ -34,17 +34,28 @@
 @endphp
 
 <!-- "Explore Colleges by Location" Section (Clean Pure White Theme) -->
-<section id="locations" class="relative py-12 sm:py-16 lg:py-20 bg-white border-t border-border/50 overflow-hidden">
+<section id="locations" class="relative py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        <!-- Section Header (Clean Minimalist Left-Aligned) -->
-        <div class="max-w-2xl mb-8 sm:mb-10">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-heading tracking-tight">
-                Explore Colleges by Location
-            </h2>
-            <p class="mt-2 text-[14px] sm:text-base font-normal text-muted leading-relaxed">
-                Find the right college in your preferred city.
-            </p>
+        <!-- Section Header with Right-Side "Explore More Places" Link -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-heading tracking-tight">
+                    Explore Colleges by Location
+                </h2>
+                <p class="mt-2 text-[14px] sm:text-base font-normal text-muted leading-relaxed">
+                    Find the right college in your preferred city.
+                </p>
+            </div>
+
+            <!-- Right-Side Link: Explore More Places in Brand Color -->
+            <a 
+                href="{{ url('/colleges') }}" 
+                class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand hover:text-brand-hover hover:underline transition-colors shrink-0 group"
+            >
+                <span>Explore More Places</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
         </div>
 
         <!-- City Cards Grid: 2 per row on Mobile, Single Row (6 columns) on Desktop -->

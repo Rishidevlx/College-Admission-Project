@@ -33,27 +33,76 @@
                     <!-- Form -->
                     <form id="cutoff-calculator-form" onsubmit="return false;" class="space-y-4">
                         
-                        <!-- 1. Stream Selection Dropdown (Styled with Brand Red Focus & Custom Appearance) -->
+                        <!-- 1. Custom Stream Selection Dropdown (Pure Brand Theme UI, Zero Browser Native Glitches) -->
                         <div>
-                            <label for="stream-select" class="block text-xs sm:text-[13px] font-semibold text-heading mb-1.5">
+                            <label class="block text-xs sm:text-[13px] font-semibold text-heading mb-1.5">
                                 Select Stream <span class="text-brand">*</span>
                             </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-brand">
-                                    <i data-lucide="graduation-cap" class="w-4.5 h-4.5"></i>
-                                </div>
-                                <select 
-                                    id="stream-select" 
-                                    onchange="onStreamDropdownChange(this.value)"
-                                    class="w-full pl-11 pr-10 h-[48px] sm:h-[50px] text-xs sm:text-sm md:text-[14px] bg-white border border-zinc-200 hover:border-brand/60 focus:border-brand rounded-xl text-heading font-semibold focus:outline-none focus:ring-4 focus:ring-brand/10 transition-all appearance-none cursor-pointer shadow-xs"
+                            
+                            <!-- Custom Dropdown Container -->
+                            <div class="relative" id="custom-stream-dropdown-wrapper">
+                                <!-- Trigger Button -->
+                                <button 
+                                    type="button" 
+                                    id="stream-dropdown-btn"
+                                    onclick="toggleCustomStreamMenu(event)"
+                                    class="w-full pl-11 pr-10 h-[48px] sm:h-[50px] text-xs sm:text-sm md:text-[14px] bg-white border border-zinc-200 hover:border-brand/70 focus:border-brand rounded-xl text-heading font-semibold transition-all flex items-center justify-between text-left shadow-xs cursor-pointer select-none"
                                 >
-                                    <option value="engineering" selected class="py-2">Engineering (TNEA - Anna University)</option>
-                                    <option value="medical" class="py-2">Medical (Paramedical / Allied Health)</option>
-                                    <option value="agriculture" class="py-2">Agriculture (TNAU)</option>
-                                    <option value="pure_science" class="py-2">Medical Pure Science (Botany / Zoology)</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-muted">
-                                    <i data-lucide="chevron-down" class="w-4.5 h-4.5"></i>
+                                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-brand">
+                                        <i data-lucide="graduation-cap" class="w-4.5 h-4.5"></i>
+                                    </div>
+                                    <span id="custom-stream-selected-label">Engineering</span>
+                                    <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-muted">
+                                        <i id="custom-stream-chevron" data-lucide="chevron-down" class="w-4.5 h-4.5 transition-transform duration-200"></i>
+                                    </div>
+                                </button>
+
+                                <!-- Custom Floating Dropdown Menu -->
+                                <div 
+                                    id="custom-stream-menu" 
+                                    class="hidden absolute top-full left-0 right-0 mt-1.5 bg-white border border-border/80 rounded-2xl shadow-xl z-30 p-1.5 space-y-1 animate-in fade-in duration-150"
+                                >
+                                    <!-- Option 1: Engineering -->
+                                    <button 
+                                        type="button" 
+                                        onclick="selectCustomStream('engineering', 'Engineering')"
+                                        class="stream-opt-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-brand bg-brand/5 hover:bg-brand/10 transition-colors cursor-pointer text-left"
+                                        data-value="engineering"
+                                    >
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="w-2 h-2 rounded-full bg-brand"></span>
+                                            <span>Engineering</span>
+                                        </div>
+                                        <i data-lucide="check" class="w-4 h-4 text-brand stream-opt-check"></i>
+                                    </button>
+
+                                    <!-- Option 2: Arts & Science -->
+                                    <button 
+                                        type="button" 
+                                        onclick="selectCustomStream('arts', 'Arts & Science')"
+                                        class="stream-opt-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-subheading hover:text-heading hover:bg-zinc-100 transition-colors cursor-pointer text-left"
+                                        data-value="arts"
+                                    >
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="w-2 h-2 rounded-full bg-zinc-300"></span>
+                                            <span>Arts &amp; Science</span>
+                                        </div>
+                                        <i data-lucide="check" class="w-4 h-4 text-brand stream-opt-check hidden"></i>
+                                    </button>
+
+                                    <!-- Option 3: Nursing -->
+                                    <button 
+                                        type="button" 
+                                        onclick="selectCustomStream('nursing', 'Nursing')"
+                                        class="stream-opt-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-subheading hover:text-heading hover:bg-zinc-100 transition-colors cursor-pointer text-left"
+                                        data-value="nursing"
+                                    >
+                                        <div class="flex items-center gap-2.5">
+                                            <span class="w-2 h-2 rounded-full bg-zinc-300"></span>
+                                            <span>Nursing</span>
+                                        </div>
+                                        <i data-lucide="check" class="w-4 h-4 text-brand stream-opt-check hidden"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -170,11 +219,11 @@
 
 <!-- ================= JAVASCRIPT CALCULATOR & MATCHER LOGIC ================= -->
 <script>
-    // Stream configuration dictionary
+    // Stream configuration dictionary (3 Streams: Engineering, Arts & Science, Nursing)
     const streamsData = {
         engineering: {
-            title: "Engineering (TNEA)",
-            formula: "Maths + (Physics / 2) + (Chemistry / 2)",
+            title: "Engineering",
+            formula: "Mathematics + (Physics / 2) + (Chemistry / 2)",
             subjects: [
                 { id: "maths", name: "Mathematics", icon: "function-square" },
                 { id: "physics", name: "Physics", icon: "zap" },
@@ -187,51 +236,34 @@
                 return m + (p / 2) + (c / 2);
             }
         },
-        medical: {
-            title: "Medical (Paramedical / Allied Health)",
-            formula: "Biology + (Physics + Chemistry) / 2",
+        arts: {
+            title: "Arts & Science",
+            formula: "Mathematics + (Physics / 2) + (Chemistry / 2)",
             subjects: [
-                { id: "biology", name: "Biology", icon: "dna" },
+                { id: "maths", name: "Mathematics", icon: "function-square" },
                 { id: "physics", name: "Physics", icon: "zap" },
                 { id: "chemistry", name: "Chemistry", icon: "flask-conical" }
             ],
             calc: (vals) => {
-                const b = vals.biology || 0;
+                const m = vals.maths || 0;
                 const p = vals.physics || 0;
                 const c = vals.chemistry || 0;
-                return b + ((p + c) / 2);
+                return m + (p / 2) + (c / 2);
             }
         },
-        agriculture: {
-            title: "Agriculture (TNAU)",
+        nursing: {
+            title: "Nursing",
             formula: "Biology + (Physics + Chemistry) / 2",
             subjects: [
-                { id: "biology", name: "Biology", icon: "sprout" },
                 { id: "physics", name: "Physics", icon: "zap" },
-                { id: "chemistry", name: "Chemistry", icon: "flask-conical" }
+                { id: "chemistry", name: "Chemistry", icon: "flask-conical" },
+                { id: "biology", name: "Biology", icon: "dna" }
             ],
             calc: (vals) => {
+                const p = vals.physics || 0;
+                const c = vals.chemistry || 0;
                 const b = vals.biology || 0;
-                const p = vals.physics || 0;
-                const c = vals.chemistry || 0;
                 return b + ((p + c) / 2);
-            }
-        },
-        pure_science: {
-            title: "Medical Pure Science",
-            formula: "(Botany + Zoology) / 2 + (Physics + Chemistry) / 2",
-            subjects: [
-                { id: "botany", name: "Botany", icon: "flower-2" },
-                { id: "zoology", name: "Zoology", icon: "bug" },
-                { id: "physics", name: "Physics", icon: "zap" },
-                { id: "chemistry", name: "Chemistry", icon: "flask-conical" }
-            ],
-            calc: (vals) => {
-                const bot = vals.botany || 0;
-                const zoo = vals.zoology || 0;
-                const p = vals.physics || 0;
-                const c = vals.chemistry || 0;
-                return ((bot + zoo) / 2) + ((p + c) / 2);
             }
         }
     };
@@ -305,7 +337,7 @@
         {
             name: "PSG Institute of Medical Sciences & Research",
             city: "Coimbatore",
-            stream: "medical",
+            stream: "nursing",
             type: "Affiliated to TN MGR Medical Univ",
             image: "{{ asset('images/colleges/psg-tech.jpg') }}",
             accreditation: "NABH / NABL",
@@ -314,73 +346,89 @@
             fees: "₹1,10,000 / Yr",
             minCutoff: 170,
             maxCutoff: 195,
-            cutoffLabel: "170 - 195 (Paramedical)",
+            cutoffLabel: "170 - 195 (Nursing)",
             rating: "4.8",
             reviews: "150+"
         },
         {
-            name: "Sri Ramachandra Institute of Higher Education",
+            name: "Sri Ramachandra Faculty of Nursing",
             city: "Chennai",
-            stream: "medical",
+            stream: "nursing",
             type: "Deemed University",
             image: "{{ asset('images/colleges/ssn.jpg') }}",
             accreditation: "NAAC A++",
             nirf: "NIRF #57",
-            courses: "B.Sc Medical Lab Tech, Cardiac Technology, BPT",
+            courses: "B.Sc Nursing, Post Basic B.Sc Nursing",
             fees: "₹1,25,000 / Yr",
             minCutoff: 160,
             maxCutoff: 190,
-            cutoffLabel: "160 - 190 (Allied)",
+            cutoffLabel: "160 - 190 (Nursing)",
             rating: "4.7",
             reviews: "210+"
         },
         {
-            name: "Tamil Nadu Agricultural University (TNAU)",
-            city: "Coimbatore",
-            stream: "agriculture",
-            type: "State Agricultural University",
+            name: "Loyola College (Autonomous)",
+            city: "Chennai",
+            stream: "arts",
+            type: "Autonomous Arts & Science",
             image: "{{ asset('images/colleges/cit.jpg') }}",
-            accreditation: "ICAR Accredited",
-            nirf: "NIRF #5",
-            courses: "B.Sc (Hons) Agriculture, Horticulture, Agricultural Engg",
-            fees: "₹40,000 / Yr",
+            accreditation: "NAAC A++ (CGPA 3.70)",
+            nirf: "NIRF #7 (Colleges)",
+            courses: "B.Sc Computer Science, Mathematics, Physics, Statistics",
+            fees: "₹45,000 / Yr",
             minCutoff: 175,
-            maxCutoff: 196,
-            cutoffLabel: "175 - 196 (TNAU)",
+            maxCutoff: 198,
+            cutoffLabel: "175 - 198 (Merit)",
             rating: "4.9",
             reviews: "320+"
         },
         {
-            name: "Adhiparasakthi Agricultural College",
-            city: "Vellore",
-            stream: "agriculture",
-            type: "Affiliated to TNAU",
+            name: "PSG College of Arts & Science",
+            city: "Coimbatore",
+            stream: "arts",
+            type: "Autonomous Arts & Science",
             image: "{{ asset('images/colleges/kct.jpg') }}",
-            accreditation: "ICAR Approved",
-            nirf: "Top Agri",
-            courses: "B.Sc (Hons) Agriculture, Food Nutrition",
-            fees: "₹75,000 / Yr",
-            minCutoff: 160,
-            maxCutoff: 185,
-            cutoffLabel: "160 - 185 (TNAU)",
-            rating: "4.5",
-            reviews: "95+"
+            accreditation: "NAAC A++",
+            nirf: "NIRF #20 (Colleges)",
+            courses: "B.Sc Data Science, IT, Electronics, BCA",
+            fees: "₹50,000 / Yr",
+            minCutoff: 165,
+            maxCutoff: 192,
+            cutoffLabel: "165 - 192 (Merit)",
+            rating: "4.8",
+            reviews: "280+"
         },
         {
-            name: "Madras Medical College (MMC) - Allied Health",
+            name: "Madras Christian College (MCC)",
             city: "Chennai",
-            stream: "pure_science",
-            type: "Govt Medical College",
+            stream: "arts",
+            type: "Autonomous Arts & Science",
             image: "{{ asset('images/colleges/ssn.jpg') }}",
-            accreditation: "Govt of Tamil Nadu",
-            nirf: "Premier Institute",
-            courses: "B.Sc Dialysis Tech, Radiography, Clinical Nutrition",
-            fees: "₹25,000 / Yr",
+            accreditation: "NAAC A++",
+            nirf: "NIRF #16 (Colleges)",
+            courses: "B.Sc Mathematics, Physics, Chemistry, BCA",
+            fees: "₹42,000 / Yr",
+            minCutoff: 170,
+            maxCutoff: 195,
+            cutoffLabel: "170 - 195 (Merit)",
+            rating: "4.8",
+            reviews: "260+"
+        },
+        {
+            name: "CMC Vellore College of Nursing",
+            city: "Vellore",
+            stream: "nursing",
+            type: "Private Autonomous",
+            image: "{{ asset('images/colleges/cit.jpg') }}",
+            accreditation: "INC Approved",
+            nirf: "Top Nursing",
+            courses: "B.Sc Nursing (4 Years)",
+            fees: "₹65,000 / Yr",
             minCutoff: 175,
             maxCutoff: 198,
-            cutoffLabel: "175 - 198 (Govt Seat)",
+            cutoffLabel: "175 - 198 (Nursing)",
             rating: "4.9",
-            reviews: "400+"
+            reviews: "410+"
         },
         {
             name: "Government College of Technology (GCT)",
@@ -402,6 +450,67 @@
 
     let currentStreamKey = 'engineering';
     let lastCalculatedCutoff = null;
+
+    // Toggle Custom Stream Dropdown Menu
+    function toggleCustomStreamMenu(e) {
+        if (e) e.stopPropagation();
+        const menu = document.getElementById('custom-stream-menu');
+        const chevron = document.getElementById('custom-stream-chevron');
+        if (!menu) return;
+
+        const isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+            menu.classList.remove('hidden');
+            if (chevron) chevron.classList.add('rotate-180');
+        } else {
+            menu.classList.add('hidden');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+    }
+
+    // Select Stream from Custom Dropdown Menu
+    function selectCustomStream(streamKey, label) {
+        // Close menu
+        const menu = document.getElementById('custom-stream-menu');
+        const chevron = document.getElementById('custom-stream-chevron');
+        if (menu) menu.classList.add('hidden');
+        if (chevron) chevron.classList.remove('rotate-180');
+
+        // Update Label
+        const labelEl = document.getElementById('custom-stream-selected-label');
+        if (labelEl) labelEl.textContent = label;
+
+        // Update Option Item UI states
+        document.querySelectorAll('.stream-opt-item').forEach(item => {
+            const val = item.getAttribute('data-value');
+            const dot = item.querySelector('span:first-child');
+            const check = item.querySelector('.stream-opt-check');
+
+            if (val === streamKey) {
+                item.className = "stream-opt-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-brand bg-brand/5 hover:bg-brand/10 transition-colors cursor-pointer text-left";
+                if (dot) dot.className = "w-2 h-2 rounded-full bg-brand";
+                if (check) check.classList.remove('hidden');
+            } else {
+                item.className = "stream-opt-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-subheading hover:text-heading hover:bg-zinc-100 transition-colors cursor-pointer text-left";
+                if (dot) dot.className = "w-2 h-2 rounded-full bg-zinc-300";
+                if (check) check.classList.add('hidden');
+            }
+        });
+
+        // Trigger engine update
+        onStreamDropdownChange(streamKey);
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const wrapper = document.getElementById('custom-stream-dropdown-wrapper');
+        const menu = document.getElementById('custom-stream-menu');
+        const chevron = document.getElementById('custom-stream-chevron');
+        if (wrapper && !wrapper.contains(e.target) && menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+    });
 
     // 1. Switch Stream & Update Fields
     function onStreamDropdownChange(streamKey) {

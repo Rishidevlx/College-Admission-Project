@@ -83,3 +83,28 @@
 .animate-float-wave-3 {
     animation: floatWave3 9s ease-in-out infinite 0.8s;
 }
+
+/* Continuous Infinite Marquee Scroll Animation (Right to Left) */
+@keyframes marqueeScroll {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll 22s linear infinite;
+}
+
+/* Reverse Infinite Marquee Scroll Animation (Left to Right) */
+@keyframes marqueeScrollReverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
+
+.animate-marquee-reverse {
+    display: flex;
+    width: max-content;
+    animation: marqueeScrollReverse 22s linear infinite;
+}
+

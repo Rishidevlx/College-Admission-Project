@@ -25,4 +25,9 @@
             </a>
         </div>
     </div>
+
+    <!-- Inline FAQs for Google Reviews Tab -->
+    <x-college.college-tab-faq 
+        title="Student Reviews & Campus Ratings FAQs"
+    />
 </div>

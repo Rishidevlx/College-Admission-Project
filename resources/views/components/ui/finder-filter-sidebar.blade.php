@@ -1,25 +1,39 @@
-<!-- Left Multi-Faceted Filter Sidebar Component (Collapsible Accordion with Visible Sticky Header & Custom Scrollbar) -->
-<aside class="w-full bg-white rounded-2xl border border-border p-5 shadow-xs max-h-[calc(100vh-7rem)] overflow-y-auto custom-scrollbar">
+<!-- Left Multi-Faceted Filter Sidebar Component (Isolated Fixed Header + Separate Scrollable Body) -->
+<aside class="w-full bg-white rounded-t-3xl sm:rounded-2xl lg:rounded-2xl border-0 lg:border lg:border-border shadow-none lg:shadow-xs max-h-[85vh] lg:max-h-[calc(100vh-7rem)] flex flex-col overflow-hidden">
     
-    <!-- Filter Header (Always Visible at Top of Card) -->
-    <div class="flex items-center justify-between pb-4 border-b border-border/70 sticky top-0 bg-white z-10">
+    <!-- Filter Header (Strictly Fixed at Top, Completely Isolated from Scrollable Area) -->
+    <div class="px-5 py-4 border-b border-border/70 bg-white flex items-center justify-between shrink-0 z-20">
         <div class="flex items-center gap-2 font-bold text-heading text-[15px]">
             <i data-lucide="sliders-horizontal" class="w-4 h-4 text-brand"></i>
             <span>Filters</span>
         </div>
-        <button 
-            type="button" 
-            onclick="resetAllFilters()"
-            class="text-xs font-semibold text-brand hover:underline cursor-pointer"
-        >
-            Clear All
-        </button>
+        <div class="flex items-center gap-3">
+            <button 
+                type="button" 
+                onclick="resetAllFilters()"
+                class="text-xs font-semibold text-brand hover:underline cursor-pointer"
+            >
+                Clear All
+            </button>
+            <!-- Mobile Close (X) Button (Visible only on < lg) -->
+            <button 
+                type="button" 
+                onclick="toggleMobileFilters()" 
+                class="lg:hidden w-7 h-7 rounded-lg bg-zinc-100 hover:bg-zinc-200 flex items-center justify-center text-heading transition-colors cursor-pointer"
+                title="Close Filters"
+            >
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
     </div>
 
-    <!-- Active Filters Display Pill Bar (Dynamic) -->
-    <div id="active-filter-tags" class="pt-3 pb-2 hidden flex-wrap gap-1.5 border-b border-border/70">
-        <!-- Rendered via JS -->
-    </div>
+    <!-- Scrollable Filter Body Container (Content Scrolls Safely Inside Here Without Bleeding Above Header) -->
+    <div class="flex-1 overflow-y-auto px-5 py-2 custom-scrollbar">
+
+        <!-- Active Filters Display Pill Bar (Dynamic) -->
+        <div id="active-filter-tags" class="py-2.5 hidden flex-wrap gap-1.5 border-b border-border/70">
+            <!-- Rendered via JS -->
+        </div>
 
     <!-- Filter Group 1: Stream & Discipline (OPEN BY DEFAULT) -->
     <div class="py-3.5 border-b border-border/70">
@@ -218,6 +232,8 @@
                 <span class="text-xs text-muted">12</span>
             </label>
         </div>
+    </div>
+
     </div>
 
 </aside>

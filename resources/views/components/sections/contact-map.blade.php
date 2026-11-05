@@ -1,5 +1,5 @@
 <!-- ================= OFFICE LOCATION & GOOGLE MAP SECTION ================= -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 border-t border-border/70">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
     <div class="bg-white rounded-3xl border border-border/80 overflow-hidden shadow-xs">
         <div class="grid grid-cols-1 lg:grid-cols-12">
             

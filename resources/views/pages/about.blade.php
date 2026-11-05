@@ -33,9 +33,12 @@
             />
         </div>
 
+        <!-- 6. Frequently Asked Questions (FAQ) Section Component -->
+        <x-sections.faq-section />
+
     </main>
 
-    <!-- 6. Reusable Footer Component -->
+    <!-- 7. Reusable Footer Component -->
     <x-ui.footer />
 
 </x-layouts.app>

@@ -10,7 +10,7 @@
     <x-college.tabs-navigation />
 
     <!-- 4. Main 2-Column Content Layout (Left: Tab Panes, Right: Sticky Sidebar) -->
-    <main class="py-8 sm:py-12 bg-white min-h-[700px] relative z-10">
+    <main class="py-8 sm:py-12 pb-24 sm:pb-12 bg-white min-h-[700px] relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
                 
@@ -30,9 +30,6 @@
 
                     <!-- Tab 5: Facilities & Campus -->
                     <x-college.tabs.tab-facilities />
-
-                    <!-- Tab 6: FAQs -->
-                    <x-college.tabs.tab-faq />
                 </div>
 
                 <!-- Right 4 Columns: Sticky Sidebar (Anchored neatly within parent column, stopping at bottom of main) -->

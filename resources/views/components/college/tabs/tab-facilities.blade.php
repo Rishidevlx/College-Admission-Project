@@ -134,4 +134,9 @@
 
     </article>
 
+    <!-- Inline FAQs for Facilities Tab -->
+    <x-college.college-tab-faq 
+        title="Hostels & Campus Facilities FAQs"
+    />
+
 </div>

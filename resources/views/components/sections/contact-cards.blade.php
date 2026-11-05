@@ -1,5 +1,5 @@
 <!-- ================= "CALL OR EMAIL US" SECTION ================= -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 border-t border-border/70">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
     
     <!-- Section Heading -->
     <div class="mb-12 sm:mb-14">

@@ -252,4 +252,9 @@
 
     </div>
 
+    <!-- Inline FAQs for College Info Tab -->
+    <x-college.college-tab-faq 
+        title="College & Admission FAQs"
+    />
+
 </div>

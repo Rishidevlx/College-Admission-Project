@@ -44,7 +44,7 @@
 @endphp
 
 <!-- ================= "WHAT GIVES US AN EDGE?" STICKY SECTION ================= -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 border-t border-border/60">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
         
         <!-- 1. STICKY LEFT COLUMN: Overline + Heading + CTA Button -->

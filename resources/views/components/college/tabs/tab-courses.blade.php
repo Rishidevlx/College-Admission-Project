@@ -172,6 +172,11 @@
 
     </div>
 
+    <!-- Inline FAQs for Courses & Fees Tab -->
+    <x-college.college-tab-faq 
+        title="Courses & Fee Structure FAQs"
+    />
+
 </div>
 
 <script>

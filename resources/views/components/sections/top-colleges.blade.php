@@ -88,17 +88,28 @@
 @endphp
 
 <!-- "Explore Top Colleges" Section (Pure White Background, Non-Scrollable 3x2 Grid) -->
-<section id="colleges" class="relative py-12 sm:py-16 lg:py-24 bg-white border-t border-border/50 overflow-hidden">
+<section id="colleges" class="relative py-12 sm:py-16 lg:py-24 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        <!-- Section Header (Clean Minimalist Left-Aligned) -->
-        <div class="max-w-2xl mb-8 sm:mb-12">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-heading tracking-tight">
-                Explore Top Colleges
-            </h2>
-            <p class="mt-2 text-[14px] sm:text-base font-normal text-muted leading-relaxed">
-                Compare verified programmes, total fee structures, accreditations, and admission status across Tamil Nadu.
-            </p>
+        <!-- Section Header with Right-Side "Explore Colleges" Link -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-heading tracking-tight">
+                    Explore Top Colleges
+                </h2>
+                <p class="mt-2 text-[14px] sm:text-base font-normal text-muted leading-relaxed">
+                    Compare verified programmes, total fee structures, accreditations, and admission status across Tamil Nadu.
+                </p>
+            </div>
+
+            <!-- Right-Side Explore Link with Arrow in Brand Color -->
+            <a 
+                href="{{ url('/colleges') }}" 
+                class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand hover:text-brand-hover hover:underline transition-colors shrink-0 group"
+            >
+                <span>Explore Colleges</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
         </div>
 
         <!-- 3 Cards per Row x 2 Rows Grid: SVGs strictly on 1st row 3rd card, and 2nd row 1st & 3rd card -->
@@ -151,10 +162,12 @@
 
         </div>
 
-        <!-- Dedicated Reusable CTA Banner Component -->
+        <!-- Dedicated Reusable CTA Banner Component (Commented out) -->
+        {{-- 
         <div class="mt-10 sm:mt-12">
             <x-ui.cta-banner />
         </div>
+        --}}
 
     </div>
 </section>

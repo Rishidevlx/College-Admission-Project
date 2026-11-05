@@ -1,5 +1,5 @@
 <!-- ================= "WHAT DRIVES US?" SECTION (MATCHING REFERENCE IMAGE EXACTLY) ================= -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-border/60">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
     
     <!-- Section Heading -->
     <div class="mb-12 sm:mb-16 text-center">
