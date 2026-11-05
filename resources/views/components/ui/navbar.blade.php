@@ -2,6 +2,7 @@
     $currentRoute = request()->path();
     $isHome = ($currentRoute === '/' || $currentRoute === '');
     $isColleges = request()->is('colleges*');
+    $isCutoff = request()->is('cutoff-calculator*');
     $isAbout = request()->is('about*');
     $isContact = request()->is('contact*');
 @endphp
@@ -47,10 +48,13 @@
                 </a>
 
                 <a 
-                    href="{{ url('/#predict-cutoff') }}" 
-                    class="font-medium text-subheading hover:text-brand transition-colors py-1"
+                    href="{{ url('/cutoff-calculator') }}" 
+                    class="font-medium transition-colors hover:text-brand relative py-1 {{ $isCutoff ? 'text-brand font-semibold' : 'text-subheading' }}"
                 >
                     <span>Cutoff Calculator</span>
+                    @if ($isCutoff)
+                        <span class="absolute bottom-0 left-0 right-0 h-[2px] bg-brand rounded-full"></span>
+                    @endif
                 </a>
 
                 <a 
@@ -196,12 +200,12 @@
                 </a>
 
                 <a 
-                    href="{{ url('/#predict-cutoff') }}" 
+                    href="{{ url('/cutoff-calculator') }}" 
                     onclick="closeMobileNav()"
-                    class="flex items-center justify-between px-3.5 py-3 rounded-xl text-heading hover:bg-zinc-50 hover:text-brand transition-colors"
+                    class="flex items-center justify-between px-3.5 py-3 rounded-xl transition-colors {{ $isCutoff ? 'bg-brand/10 text-brand font-bold' : 'text-heading hover:bg-zinc-50 hover:text-brand' }}"
                 >
                     <div class="flex items-center gap-3">
-                        <i data-lucide="calculator" class="w-4 h-4 text-muted"></i>
+                        <i data-lucide="calculator" class="w-4 h-4 {{ $isCutoff ? 'text-brand' : 'text-muted' }}"></i>
                         <span>Cutoff Calculator</span>
                     </div>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i>

@@ -3,15 +3,8 @@
     <!-- 1. Fixed Pure White Navigation Bar -->
     <x-ui.navbar />
 
-    <!-- Top Header Area (Hero with Ambient Glow) -->
+    <!-- Top Header Area (Hero Header Section) -->
     <div class="relative bg-white border-b border-border/70 z-30">
-        <!-- Ambient Glow: Central Brand Theme Tone (Isolated overflow-hidden layer so dropdowns are not clipped) -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            <div class="absolute -top-28 sm:-top-40 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1100px] lg:w-[1300px] h-[360px] sm:h-[480px] bg-brand rounded-full filter blur-[90px] sm:blur-[130px] opacity-25 sm:opacity-30 pointer-events-none"></div>
-            <div class="absolute -top-20 -left-20 sm:-top-28 sm:-left-24 w-[350px] sm:w-[480px] h-[260px] sm:h-[360px] bg-brand rounded-full filter blur-[75px] sm:blur-[110px] opacity-20 sm:opacity-25 pointer-events-none"></div>
-            <div class="absolute -top-20 -right-20 sm:-top-28 sm:-right-24 w-[350px] sm:w-[480px] h-[260px] sm:h-[360px] bg-brand rounded-full filter blur-[75px] sm:blur-[110px] opacity-20 sm:opacity-25 pointer-events-none"></div>
-        </div>
-
         <!-- 2. Hero Header Section with Search Bar & Stream Preference Selector -->
         <x-sections.finder-hero />
     </div>
@@ -40,8 +33,8 @@
             <!-- 2-Column Grid Layout -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                <!-- Left Column: Filter Sidebar (lg:col-span-4 xl:col-span-3) -->
-                <div id="filter-sidebar-wrapper" class="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-6 z-20">
+                <!-- Left Column: Filter Sidebar (lg:col-span-4 xl:col-span-3 - Sticky with top offset matching navbar height) -->
+                <div id="filter-sidebar-wrapper" class="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-24 z-20">
                     <x-ui.finder-filter-sidebar />
                 </div>
 
@@ -92,7 +85,6 @@
                             cutoff="192 - 198 (TNEA)"
                             rating="4.8"
                             reviews="240+"
-                            link="javascript:void(0)"
                         />
 
                         <!-- College 2: SSN College of Engineering -->
@@ -110,7 +102,6 @@
                             cutoff="190 - 197 (TNEA)"
                             rating="4.7"
                             reviews="190+"
-                            link="javascript:void(0)"
                         />
 
                         <!-- College 3: Coimbatore Institute of Technology -->
@@ -128,7 +119,6 @@
                             cutoff="186 - 194 (TNEA)"
                             rating="4.6"
                             reviews="150+"
-                            link="javascript:void(0)"
                         />
 
                         <!-- College 4: Thiagarajar College of Engineering -->
@@ -146,7 +136,6 @@
                             cutoff="185 - 193 (TNEA)"
                             rating="4.6"
                             reviews="135+"
-                            link="javascript:void(0)"
                         />
 
                         <!-- College 5: Loyola College -->
@@ -164,7 +153,6 @@
                             cutoff="Merit Based (92%+ in 12th)"
                             rating="4.8"
                             reviews="310+"
-                            link="javascript:void(0)"
                         />
 
                         <!-- College 6: Kumaraguru College of Technology -->
@@ -182,7 +170,6 @@
                             cutoff="180 - 192 (TNEA)"
                             rating="4.5"
                             reviews="165+"
-                            link="javascript:void(0)"
                         />
 
                     </div>
@@ -205,20 +192,13 @@
                         </button>
                     </div>
 
-                    <!-- Bottom Need Guidance Card -->
-                    <div class="mt-8 p-5 sm:p-6 bg-gradient-to-r from-orange-50/70 via-white to-orange-50/40 border border-brand/20 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div>
-                            <span class="inline-block text-[11px] font-bold text-brand uppercase tracking-wider mb-1">Confused About Cutoff?</span>
-                            <h4 class="text-sm sm:text-base font-bold text-heading">Get 100% Free TNEA & College Counselling</h4>
-                            <p class="text-xs text-muted mt-0.5">Talk to our senior admission counsellors to know your best eligible college options.</p>
-                        </div>
-                        <a 
-                            href="tel:+917358110062" 
-                            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-heading hover:bg-brand text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-xs flex-shrink-0"
-                        >
-                            <i data-lucide="phone-call" class="w-4 h-4 text-brand group-hover:text-white"></i>
-                            <span>Call +91-7358110062</span>
-                        </a>
+                    <!-- Bottom Reusable CTA Banner Component -->
+                    <div class="mt-8">
+                        <x-ui.cta-banner 
+                            title=" Get 100% Free College Counselling"
+                            button-text="Call Now"
+                            button-link="tel:+917358110062"
+                        />
                     </div>
 
                 </div>
@@ -314,6 +294,9 @@
 
             const btnText = document.getElementById('stream-preference-btn-text');
             if (btnText) btnText.textContent = 'Select Stream';
+
+            const clearStreamBtn = document.getElementById('clear-stream-btn');
+            if (clearStreamBtn) clearStreamBtn.classList.add('hidden');
 
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
             runFilter();

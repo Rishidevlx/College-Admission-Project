@@ -13,12 +13,18 @@
     'cutoff' => '',
     'rating' => '4.6',
     'reviews' => '120+',
-    'link' => '#',
+    'link' => '',
 ])
+
+@php
+    $profileUrl = !empty($link) && $link !== '#' && $link !== 'javascript:void(0)' 
+        ? $link 
+        : url('/colleges/' . \Illuminate\Support\Str::slug($name));
+@endphp
 
 <!-- Directory Finder College Card Component (Horizontal on Desktop, Responsive Stack on Mobile) -->
 <article 
-    class="finder-college-item group bg-white border border-border rounded-2xl overflow-hidden hover:border-brand hover:shadow-lg hover:shadow-brand/10 transition-all duration-300 flex flex-col md:flex-row"
+    class="finder-college-item group bg-white border border-border rounded-2xl overflow-hidden shadow-2xs hover:shadow-md transition-shadow duration-200 flex flex-col md:flex-row"
     data-name="{{ strtolower($name) }}"
     data-city="{{ $city }}"
     data-stream="{{ $stream }}"
@@ -30,7 +36,7 @@
         <img 
             src="{{ $image }}" 
             alt="{{ $name }}" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            class="w-full h-full object-cover"
             loading="lazy"
         />
         <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/70 via-black/20 to-transparent"></div>
@@ -70,7 +76,7 @@
                             {{ $type }}
                         </span>
                     </div>
-                    <h3 class="text-base sm:text-lg font-bold text-heading mt-1 leading-snug group-hover:text-brand transition-colors">
+                    <h3 class="text-base sm:text-lg font-bold text-heading mt-1 leading-snug">
                         {{ $name }}
                     </h3>
                 </div>
@@ -101,11 +107,11 @@
         <!-- Card Footer Actions: Enquire Now & View Details -->
         <div class="mt-4 pt-3.5 border-t border-border/70 flex items-center justify-between gap-3">
             <a 
-                href="{{ $link }}" 
-                class="inline-flex items-center gap-1 text-xs sm:text-[13px] font-semibold text-heading hover:text-brand transition-colors group/btn"
+                href="{{ $profileUrl }}" 
+                class="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-heading hover:text-brand transition-colors group/btn"
             >
-                <span>View Full Profile</span>
-                <i data-lucide="arrow-right" class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform"></i>
+                <span>View More Details</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform text-brand"></i>
             </a>
 
             <div class="flex items-center gap-2">
