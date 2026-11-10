@@ -36,10 +36,10 @@
         </div>
 
     <!-- Filter Group 1: Stream & Discipline (OPEN BY DEFAULT) -->
-    <div class="py-3.5 border-b border-border/70">
+    <div class="filter-group py-3.5 border-b border-border/70">
         <button 
             type="button" 
-            onclick="toggleFilterAccordion('group-stream')" 
+            onclick="toggleFilterAccordion(this)" 
             class="w-full flex items-center justify-between text-left cursor-pointer group select-none py-1"
         >
             <div class="flex items-center gap-2">
@@ -48,10 +48,10 @@
                 </span>
                 <span class="text-xs text-muted font-normal">(5)</span>
             </div>
-            <i id="chevron-group-stream" data-lucide="chevron-up" class="w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
+            <i data-lucide="chevron-up" class="filter-chevron w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
         </button>
 
-        <div id="body-group-stream" class="space-y-2 text-[13px] text-subheading pt-3">
+        <div class="filter-group-body space-y-2 text-[13px] text-subheading pt-3">
             <label class="flex items-center justify-between cursor-pointer group">
                 <div class="flex items-center gap-2">
                     <input type="checkbox" name="stream" value="Engineering" onchange="applySidebarFilters()" class="w-4 h-4 rounded text-brand focus:ring-brand/30 border-border accent-brand" />
@@ -91,10 +91,10 @@
     </div>
 
     <!-- Filter Group 2: District / Location (COLLAPSED BY DEFAULT) -->
-    <div class="py-3.5 border-b border-border/70">
+    <div class="filter-group py-3.5 border-b border-border/70">
         <button 
             type="button" 
-            onclick="toggleFilterAccordion('group-district')" 
+            onclick="toggleFilterAccordion(this)" 
             class="w-full flex items-center justify-between text-left cursor-pointer group select-none py-1"
         >
             <div class="flex items-center gap-2">
@@ -103,10 +103,10 @@
                 </span>
                 <span class="text-xs text-muted font-normal">(6)</span>
             </div>
-            <i id="chevron-group-district" data-lucide="chevron-down" class="w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
+            <i data-lucide="chevron-down" class="filter-chevron w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
         </button>
 
-        <div id="body-group-district" class="hidden space-y-2 text-[13px] text-subheading pt-3">
+        <div class="filter-group-body hidden space-y-2 text-[13px] text-subheading pt-3">
             <label class="flex items-center justify-between cursor-pointer group">
                 <div class="flex items-center gap-2">
                     <input type="checkbox" name="city" value="Chennai" onchange="applySidebarFilters()" class="w-4 h-4 rounded text-brand focus:ring-brand/30 border-border accent-brand" />
@@ -153,10 +153,10 @@
     </div>
 
     <!-- Filter Group 3: College Type (COLLAPSED BY DEFAULT) -->
-    <div class="py-3.5 border-b border-border/70">
+    <div class="filter-group py-3.5 border-b border-border/70">
         <button 
             type="button" 
-            onclick="toggleFilterAccordion('group-type')" 
+            onclick="toggleFilterAccordion(this)" 
             class="w-full flex items-center justify-between text-left cursor-pointer group select-none py-1"
         >
             <div class="flex items-center gap-2">
@@ -165,10 +165,10 @@
                 </span>
                 <span class="text-xs text-muted font-normal">(3)</span>
             </div>
-            <i id="chevron-group-type" data-lucide="chevron-down" class="w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
+            <i data-lucide="chevron-down" class="filter-chevron w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
         </button>
 
-        <div id="body-group-type" class="hidden space-y-2 text-[13px] text-subheading pt-3">
+        <div class="filter-group-body hidden space-y-2 text-[13px] text-subheading pt-3">
             <label class="flex items-center justify-between cursor-pointer group">
                 <div class="flex items-center gap-2">
                     <input type="checkbox" name="type" value="Autonomous" onchange="applySidebarFilters()" class="w-4 h-4 rounded text-brand focus:ring-brand/30 border-border accent-brand" />
@@ -194,10 +194,10 @@
     </div>
 
     <!-- Filter Group 4: Annual Fees Range (COLLAPSED BY DEFAULT) -->
-    <div class="py-3.5">
+    <div class="filter-group py-3.5">
         <button 
             type="button" 
-            onclick="toggleFilterAccordion('group-fees')" 
+            onclick="toggleFilterAccordion(this)" 
             class="w-full flex items-center justify-between text-left cursor-pointer group select-none py-1"
         >
             <div class="flex items-center gap-2">
@@ -206,10 +206,10 @@
                 </span>
                 <span class="text-xs text-muted font-normal">(3)</span>
             </div>
-            <i id="chevron-group-fees" data-lucide="chevron-down" class="w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
+            <i data-lucide="chevron-down" class="filter-chevron w-4 h-4 text-muted group-hover:text-brand transition-transform duration-200"></i>
         </button>
 
-        <div id="body-group-fees" class="hidden space-y-2 text-[13px] text-subheading pt-3">
+        <div class="filter-group-body hidden space-y-2 text-[13px] text-subheading pt-3">
             <label class="flex items-center justify-between cursor-pointer group">
                 <div class="flex items-center gap-2">
                     <input type="checkbox" name="fee" value="< 50k" onchange="applySidebarFilters()" class="w-4 h-4 rounded text-brand focus:ring-brand/30 border-border accent-brand" />
@@ -238,22 +238,30 @@
 
 </aside>
 
-<!-- Filter Accordion Toggle Script -->
+<!-- Filter Accordion Toggle Script (Locally Scoped to Avoid Desktop/Mobile ID Duplication) -->
 <script>
-    function toggleFilterAccordion(groupId) {
-        const body = document.getElementById('body-' + groupId);
-        const chevron = document.getElementById('chevron-' + groupId);
+    function toggleFilterAccordion(btn) {
+        if (!btn) return;
+        const group = btn.closest('.filter-group');
+        if (!group) return;
 
-        if (!body || !chevron) return;
+        const body = group.querySelector('.filter-group-body');
+        const chevron = group.querySelector('.filter-chevron');
+
+        if (!body) return;
 
         const isHidden = body.classList.contains('hidden');
 
         if (isHidden) {
             body.classList.remove('hidden');
-            chevron.setAttribute('data-lucide', 'chevron-up');
+            if (chevron) {
+                chevron.setAttribute('data-lucide', 'chevron-up');
+            }
         } else {
             body.classList.add('hidden');
-            chevron.setAttribute('data-lucide', 'chevron-down');
+            if (chevron) {
+                chevron.setAttribute('data-lucide', 'chevron-down');
+            }
         }
 
         // Re-render Lucide icon

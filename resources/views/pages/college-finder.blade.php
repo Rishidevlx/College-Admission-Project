@@ -207,8 +207,8 @@
         </div>
     </div>
 
-    <!-- ================= FIXED LEFT-EDGE CENTERED SQUARE FILTER BUTTON (OVERLAYS ALL CONTENT) ================= -->
-    <div class="fixed left-0 top-1/2 -translate-y-1/2 z-50 lg:hidden select-none">
+    <!-- ================= FIXED LEFT-EDGE LOWERED SQUARE FILTER BUTTON (OVERLAYS ALL CONTENT) ================= -->
+    <div class="fixed left-0 top-[65%] -translate-y-1/2 z-50 lg:hidden select-none">
         <button 
             type="button" 
             onclick="toggleMobileFilters()" 
